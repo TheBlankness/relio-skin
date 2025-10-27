@@ -83,6 +83,17 @@ const schema = defineSchema({
   })
     .index("userId", ["userId"])
     .index("stripeId", ["stripeId"]),
+  categories: defineTable({
+    name: v.string(),
+    description: v.string(),
+    icon: v.string(),
+    slug: v.string(),
+    providerCount: v.number(),
+  }).index("slug", ["slug"]),
+  stats: defineTable({
+    key: v.string(),
+    value: v.number(),
+  }).index("key", ["key"]),
 });
 
 export default schema;
