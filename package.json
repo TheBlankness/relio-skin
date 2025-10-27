@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "npm-run-all --parallel dev:frontend dev:backend",
-    "dev:frontend": "vite",
+    "dev:frontend": "vite --port 5174",
     "dev:backend": "convex dev",
     "predev": "convex dev --run init --until-success",
     "build": "tsc -b && vite build",
@@ -33,6 +33,7 @@
     "convex": "^1.13.2",
     "convex-helpers": "^0.1.50",
     "cookie": "^0.6.0",
+    "framer-motion": "^12.23.24",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
