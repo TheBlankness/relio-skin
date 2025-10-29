@@ -10,9 +10,11 @@ export const Route = createFileRoute("/_app/_auth/dashboard/_layout/book/$therap
   component: BookTherapistPage,
 });
 
+
 function BookTherapistPage() {
   const { therapistId } = Route.useParams();
   const navigate = useNavigate();
+
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedTreatment, setSelectedTreatment] = useState("");
