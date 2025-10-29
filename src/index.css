@@ -9,53 +9,53 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 0 0% 98%;
+    --foreground: 210 60% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 210 60% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 24 100% 65%;
+    --popover-foreground: 210 60% 12%;
+    --primary: 210 65% 20%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 199 100% 47%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    --secondary: 340 40% 92%;
+    --secondary-foreground: 210 60% 12%;
+    --muted: 210 15% 92%;
+    --muted-foreground: 210 20% 45%;
+    --accent: 340 45% 95%;
+    --accent-foreground: 210 60% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 24 100% 65%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 210 65% 20%;
     --radius: 1rem;
-    --muted-grid: rgba(0, 0, 0, 0.05);
+    --muted-grid: rgba(0, 0, 0, 0.04);
 
-    /* JomTolong brand colors */
-    --jomtolong-orange: 24 100% 65%;
-    --jomtolong-blue: 199 100% 47%;
+    /* RelioSkin brand colors - Clean navy + soft rose */
+    --relioskin-navy: 210 65% 20%;
+    --relioskin-rose: 340 40% 92%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 15%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 15%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 24 100% 65%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 199 100% 47%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    --background: 210 60% 8%;
+    --foreground: 0 0% 96%;
+    --card: 210 55% 12%;
+    --card-foreground: 0 0% 96%;
+    --popover: 210 55% 12%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 340 45% 85%;
+    --primary-foreground: 210 60% 10%;
+    --secondary: 210 45% 30%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 210 50% 16%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 210 50% 16%;
+    --accent-foreground: 0 0% 96%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 24 100% 65%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 210 50% 20%;
+    --input: 210 50% 20%;
+    --ring: 340 45% 85%;
     --muted-grid: rgba(255, 255, 255, 0.05);
   }
 }

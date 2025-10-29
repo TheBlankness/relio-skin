@@ -22,10 +22,13 @@ import { Route as AppAuthOnboardingLayoutImport } from './routes/_app/_auth/onbo
 import { Route as AppAuthDashboardLayoutImport } from './routes/_app/_auth/dashboard/_layout'
 import { Route as AppAuthDashboardLayoutIndexImport } from './routes/_app/_auth/dashboard/_layout.index'
 import { Route as AppAuthOnboardingLayoutUsernameImport } from './routes/_app/_auth/onboarding/_layout.username'
+import { Route as AppAuthDashboardLayoutTherapistsImport } from './routes/_app/_auth/dashboard/_layout.therapists'
 import { Route as AppAuthDashboardLayoutSettingsImport } from './routes/_app/_auth/dashboard/_layout.settings'
 import { Route as AppAuthDashboardLayoutCheckoutImport } from './routes/_app/_auth/dashboard/_layout.checkout'
+import { Route as AppAuthDashboardLayoutBookingsImport } from './routes/_app/_auth/dashboard/_layout.bookings'
 import { Route as AppAuthDashboardLayoutSettingsIndexImport } from './routes/_app/_auth/dashboard/_layout.settings.index'
 import { Route as AppAuthDashboardLayoutSettingsBillingImport } from './routes/_app/_auth/dashboard/_layout.settings.billing'
+import { Route as AppAuthDashboardLayoutBookTherapistIdImport } from './routes/_app/_auth/dashboard/_layout.book.$therapistId'
 
 // Create Virtual Routes
 
@@ -97,6 +100,12 @@ const AppAuthOnboardingLayoutUsernameRoute =
     getParentRoute: () => AppAuthOnboardingLayoutRoute,
   } as any)
 
+const AppAuthDashboardLayoutTherapistsRoute =
+  AppAuthDashboardLayoutTherapistsImport.update({
+    path: '/therapists',
+    getParentRoute: () => AppAuthDashboardLayoutRoute,
+  } as any)
+
 const AppAuthDashboardLayoutSettingsRoute =
   AppAuthDashboardLayoutSettingsImport.update({
     path: '/settings',
@@ -106,6 +115,12 @@ const AppAuthDashboardLayoutSettingsRoute =
 const AppAuthDashboardLayoutCheckoutRoute =
   AppAuthDashboardLayoutCheckoutImport.update({
     path: '/checkout',
+    getParentRoute: () => AppAuthDashboardLayoutRoute,
+  } as any)
+
+const AppAuthDashboardLayoutBookingsRoute =
+  AppAuthDashboardLayoutBookingsImport.update({
+    path: '/bookings',
     getParentRoute: () => AppAuthDashboardLayoutRoute,
   } as any)
 
@@ -119,6 +134,12 @@ const AppAuthDashboardLayoutSettingsBillingRoute =
   AppAuthDashboardLayoutSettingsBillingImport.update({
     path: '/billing',
     getParentRoute: () => AppAuthDashboardLayoutSettingsRoute,
+  } as any)
+
+const AppAuthDashboardLayoutBookTherapistIdRoute =
+  AppAuthDashboardLayoutBookTherapistIdImport.update({
+    path: '/book/$therapistId',
+    getParentRoute: () => AppAuthDashboardLayoutRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -195,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLoginLayoutIndexImport
       parentRoute: typeof AppLoginLayoutImport
     }
+    '/_app/_auth/dashboard/_layout/bookings': {
+      id: '/_app/_auth/dashboard/_layout/bookings'
+      path: '/bookings'
+      fullPath: '/dashboard/bookings'
+      preLoaderRoute: typeof AppAuthDashboardLayoutBookingsImport
+      parentRoute: typeof AppAuthDashboardLayoutImport
+    }
     '/_app/_auth/dashboard/_layout/checkout': {
       id: '/_app/_auth/dashboard/_layout/checkout'
       path: '/checkout'
@@ -209,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAuthDashboardLayoutSettingsImport
       parentRoute: typeof AppAuthDashboardLayoutImport
     }
+    '/_app/_auth/dashboard/_layout/therapists': {
+      id: '/_app/_auth/dashboard/_layout/therapists'
+      path: '/therapists'
+      fullPath: '/dashboard/therapists'
+      preLoaderRoute: typeof AppAuthDashboardLayoutTherapistsImport
+      parentRoute: typeof AppAuthDashboardLayoutImport
+    }
     '/_app/_auth/onboarding/_layout/username': {
       id: '/_app/_auth/onboarding/_layout/username'
       path: '/username'
@@ -221,6 +256,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/dashboard/'
       preLoaderRoute: typeof AppAuthDashboardLayoutIndexImport
+      parentRoute: typeof AppAuthDashboardLayoutImport
+    }
+    '/_app/_auth/dashboard/_layout/book/$therapistId': {
+      id: '/_app/_auth/dashboard/_layout/book/$therapistId'
+      path: '/book/$therapistId'
+      fullPath: '/dashboard/book/$therapistId'
+      preLoaderRoute: typeof AppAuthDashboardLayoutBookTherapistIdImport
       parentRoute: typeof AppAuthDashboardLayoutImport
     }
     '/_app/_auth/dashboard/_layout/settings/billing': {
@@ -248,13 +290,16 @@ export const routeTree = rootRoute.addChildren({
     AppAuthRoute: AppAuthRoute.addChildren({
       AppAuthDashboardRoute: AppAuthDashboardRoute.addChildren({
         AppAuthDashboardLayoutRoute: AppAuthDashboardLayoutRoute.addChildren({
+          AppAuthDashboardLayoutBookingsRoute,
           AppAuthDashboardLayoutCheckoutRoute,
           AppAuthDashboardLayoutSettingsRoute:
             AppAuthDashboardLayoutSettingsRoute.addChildren({
               AppAuthDashboardLayoutSettingsBillingRoute,
               AppAuthDashboardLayoutSettingsIndexRoute,
             }),
+          AppAuthDashboardLayoutTherapistsRoute,
           AppAuthDashboardLayoutIndexRoute,
+          AppAuthDashboardLayoutBookTherapistIdRoute,
         }),
       }),
       AppAuthOnboardingRoute: AppAuthOnboardingRoute.addChildren({
@@ -326,9 +371,12 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_app/_auth/dashboard/_layout.tsx",
       "parent": "/_app/_auth/dashboard",
       "children": [
+        "/_app/_auth/dashboard/_layout/bookings",
         "/_app/_auth/dashboard/_layout/checkout",
         "/_app/_auth/dashboard/_layout/settings",
-        "/_app/_auth/dashboard/_layout/"
+        "/_app/_auth/dashboard/_layout/therapists",
+        "/_app/_auth/dashboard/_layout/",
+        "/_app/_auth/dashboard/_layout/book/$therapistId"
       ]
     },
     "/_app/_auth/onboarding": {
@@ -349,6 +397,10 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_app/login/_layout.index.tsx",
       "parent": "/_app/login/_layout"
     },
+    "/_app/_auth/dashboard/_layout/bookings": {
+      "filePath": "_app/_auth/dashboard/_layout.bookings.tsx",
+      "parent": "/_app/_auth/dashboard/_layout"
+    },
     "/_app/_auth/dashboard/_layout/checkout": {
       "filePath": "_app/_auth/dashboard/_layout.checkout.tsx",
       "parent": "/_app/_auth/dashboard/_layout"
@@ -361,12 +413,20 @@ export const routeTree = rootRoute.addChildren({
         "/_app/_auth/dashboard/_layout/settings/"
       ]
     },
+    "/_app/_auth/dashboard/_layout/therapists": {
+      "filePath": "_app/_auth/dashboard/_layout.therapists.tsx",
+      "parent": "/_app/_auth/dashboard/_layout"
+    },
     "/_app/_auth/onboarding/_layout/username": {
       "filePath": "_app/_auth/onboarding/_layout.username.tsx",
       "parent": "/_app/_auth/onboarding/_layout"
     },
     "/_app/_auth/dashboard/_layout/": {
       "filePath": "_app/_auth/dashboard/_layout.index.tsx",
+      "parent": "/_app/_auth/dashboard/_layout"
+    },
+    "/_app/_auth/dashboard/_layout/book/$therapistId": {
+      "filePath": "_app/_auth/dashboard/_layout.book.$therapistId.tsx",
       "parent": "/_app/_auth/dashboard/_layout"
     },
     "/_app/_auth/dashboard/_layout/settings/billing": {

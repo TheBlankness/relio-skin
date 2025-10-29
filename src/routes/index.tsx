@@ -18,6 +18,9 @@ import {
   Users,
   TrendingUp,
   Clock,
+  Search,
+  Filter,
+  MapPin,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -43,62 +46,62 @@ function Index() {
   // Mock categories data (replace with real Convex query when data is seeded)
   const categories = [
     {
-      name: "Therapy & Wellness",
-      description: "Mental health support and wellness services",
+      name: "Classic Facial",
+      description: "Deep cleansing and rejuvenating treatment",
       icon: "heart",
-      providerCount: 120,
+      providerCount: 60,
     },
     {
-      name: "Home Cleaning",
-      description: "Professional cleaning services for your home",
+      name: "Anti-Aging",
+      description: "Reduce wrinkles and restore youthful glow",
       icon: "home",
-      providerCount: 200,
+      providerCount: 45,
     },
     {
-      name: "Handyman & Repairs",
-      description: "Fix anything in your home or office",
+      name: "Acne Treatment",
+      description: "Specialized care for problem skin",
       icon: "wrench",
-      providerCount: 150,
+      providerCount: 38,
     },
     {
-      name: "Tutoring",
-      description: "Expert tutors for all subjects and levels",
+      name: "Brightening",
+      description: "Illuminate and even out skin tone",
       icon: "graduation-cap",
-      providerCount: 180,
+      providerCount: 42,
     },
     {
-      name: "Tech Support",
-      description: "IT help and technical assistance",
+      name: "Hydration Boost",
+      description: "Intensive moisture therapy",
       icon: "laptop",
-      providerCount: 90,
+      providerCount: 35,
     },
   ];
 
   const features = [
     {
       icon: <CheckCircle2 className="w-8 h-8 text-primary" />,
-      title: "Verified Providers",
-      description: "All service providers are background-checked and verified",
+      title: "Certified Therapists",
+      description: "All therapists are professionally trained and certified",
     },
     {
-      icon: <CreditCard className="w-8 h-8 text-secondary" />,
-      title: "Secure Payments",
-      description: "Pay safely with our encrypted payment system",
+      icon: <Heart className="w-8 h-8 text-secondary" />,
+      title: "Premium Products",
+      description: "We use only high-quality, dermatologist-approved products",
     },
     {
       icon: <Star className="w-8 h-8 text-primary" />,
-      title: "Ratings & Reviews",
-      description: "Real reviews from real customers",
+      title: "Personalized Care",
+      description: "Treatments customized to your unique skin needs",
     },
     {
-      icon: <Zap className="w-8 h-8 text-secondary" />,
-      title: "Real-time Updates",
-      description: "Track your service request in real-time with Convex",
+      icon: <Home className="w-8 h-8 text-secondary" />,
+      title: "Home Comfort",
+      description: "Professional spa experience in the comfort of your home",
     },
     {
       icon: <Headphones className="w-8 h-8 text-primary" />,
-      title: "24/7 Support",
-      description: "We're here to help whenever you need us",
+      title: "Flexible Booking",
+      description: "Schedule treatments at your convenience, 7 days a week",
     },
   ];
 
@@ -120,9 +123,18 @@ function Index() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2">
             <Logo />
-            <span className="text-xl font-bold text-foreground">JomTolong</span>
+            <span className="text-xl font-bold text-foreground">RelioSkin</span>
           </Link>
           <div className="flex items-center gap-4">
+            <Link
+              to="/login"
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
+                "hidden md:flex"
+              )}
+            >
+              Browse Therapists
+            </Link>
             <Link
               to="/login"
               className={cn(
@@ -163,17 +175,18 @@ function Index() {
               variants={fadeInUp}
               className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
             >
-              Need help?{" "}
+              Premium{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Let's JomTolong
+                Facial Treatments
               </span>
+              {" "}at Your Doorstep
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl"
             >
-              Book trusted help for therapy, cleaning, fixing, tutoring, and more — all in one place
+              Experience professional facial treatments in the comfort of your home — expert therapists, premium products, personalized care
             </motion.p>
 
             <motion.div
@@ -187,7 +200,7 @@ function Index() {
                   "h-12 px-8 text-base shadow-lg hover:shadow-xl transition-shadow"
                 )}
               >
-                Find Help
+                Book Now
               </Link>
               <Link
                 to="/login"
@@ -196,7 +209,7 @@ function Index() {
                   "h-12 px-8 text-base border-secondary text-secondary hover:bg-secondary/10"
                 )}
               >
-                Offer Help
+                View Services
               </Link>
             </motion.div>
 
@@ -206,13 +219,13 @@ function Index() {
             >
               <div className="flex flex-col items-center">
                 <Users className="mb-2 h-8 w-8 text-primary" />
-                <div className="text-3xl font-bold text-foreground">500+</div>
-                <div className="text-sm text-muted-foreground">Helpers</div>
+                <div className="text-3xl font-bold text-foreground">1000+</div>
+                <div className="text-sm text-muted-foreground">Happy Clients</div>
               </div>
               <div className="flex flex-col items-center">
                 <TrendingUp className="mb-2 h-8 w-8 text-secondary" />
-                <div className="text-3xl font-bold text-foreground">2.5k+</div>
-                <div className="text-sm text-muted-foreground">Bookings</div>
+                <div className="text-3xl font-bold text-foreground">50+</div>
+                <div className="text-sm text-muted-foreground">Expert Therapists</div>
               </div>
               <div className="flex flex-col items-center">
                 <Star className="mb-2 h-8 w-8 text-primary" />
@@ -238,7 +251,7 @@ function Index() {
               How It Works
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Getting help is easier than ever with JomTolong
+              Your journey to radiant skin starts here with RelioSkin
             </p>
           </motion.div>
 
@@ -246,18 +259,18 @@ function Index() {
             {[
               {
                 step: "1",
-                title: "Browse Services",
-                description: "Explore our wide range of trusted service providers",
+                title: "Book Your Treatment",
+                description: "Choose your preferred facial treatment and select a convenient time slot",
               },
               {
                 step: "2",
-                title: "Book & Pay Securely",
-                description: "Choose your provider and pay safely through our platform",
+                title: "We Come to You",
+                description: "Our certified therapist arrives at your doorstep with premium equipment",
               },
               {
                 step: "3",
-                title: "Get It Done",
-                description: "Sit back and let our verified helpers take care of it",
+                title: "Relax & Glow",
+                description: "Enjoy a professional spa experience in the comfort of your home",
               },
             ].map((item, index) => (
               <motion.div
@@ -286,6 +299,162 @@ function Index() {
         </div>
       </section>
 
+      {/* Marketplace Browse Section */}
+      <section className="border-b bg-background py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
+              Browse Certified Therapists
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              Find the perfect therapist for your needs — filter by location, specialty, and availability
+            </p>
+          </motion.div>
+
+          {/* Search and Filter Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
+          >
+            <Card className="p-6">
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="flex items-center gap-3 rounded-lg border bg-background px-4 py-3">
+                  <Search className="h-5 w-5 text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Search therapists..."
+                    className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+                  />
+                </div>
+                <div className="flex items-center gap-3 rounded-lg border bg-background px-4 py-3">
+                  <MapPin className="h-5 w-5 text-muted-foreground" />
+                  <input
+                    type="text"
+                    placeholder="Location"
+                    className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+                  />
+                </div>
+                <div className="flex items-center gap-3 rounded-lg border bg-background px-4 py-3">
+                  <Filter className="h-5 w-5 text-muted-foreground" />
+                  <select className="flex-1 bg-transparent outline-none">
+                    <option>All Specialties</option>
+                    <option>Anti-Aging</option>
+                    <option>Acne Treatment</option>
+                    <option>Brightening</option>
+                    <option>Hydration</option>
+                  </select>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Featured Therapists */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Sarah Chen",
+                specialty: "Anti-Aging Specialist",
+                rating: 4.9,
+                reviews: 127,
+                experience: "8 years",
+                price: "From RM80",
+                location: "Kuala Lumpur",
+              },
+              {
+                name: "Aisha Rahman",
+                specialty: "Acne & Problem Skin",
+                rating: 5.0,
+                reviews: 98,
+                experience: "6 years",
+                price: "From RM75",
+                location: "Petaling Jaya",
+              },
+              {
+                name: "Emily Tan",
+                specialty: "Brightening & Glow",
+                rating: 4.8,
+                reviews: 156,
+                experience: "10 years",
+                price: "From RM85",
+                location: "Subang Jaya",
+              },
+            ].map((therapist, index) => (
+              <motion.div
+                key={therapist.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full cursor-pointer transition-all hover:shadow-xl hover:border-primary border-2">
+                  <CardHeader>
+                    <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 text-4xl font-bold text-primary">
+                      {therapist.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <CardTitle className="text-xl">{therapist.name}</CardTitle>
+                    <CardDescription className="text-base font-medium text-primary">
+                      {therapist.specialty}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 fill-primary text-primary" />
+                      <span className="font-semibold">{therapist.rating}</span>
+                      <span className="text-sm text-muted-foreground">({therapist.reviews} reviews)</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <MapPin className="h-4 w-4" />
+                      <span>{therapist.location}</span>
+                    </div>
+                    <div className="flex items-center justify-between pt-3 border-t">
+                      <span className="text-sm text-muted-foreground">{therapist.experience} experience</span>
+                      <span className="font-semibold text-primary">{therapist.price}</span>
+                    </div>
+                    <Link
+                      to="/login"
+                      className={cn(
+                        buttonVariants({ size: "sm" }),
+                        "w-full mt-2"
+                      )}
+                    >
+                      Book Now
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-12 text-center"
+          >
+            <Link
+              to="/login"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-12 px-8 text-base"
+              )}
+            >
+              View All Therapists
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Top Categories Section */}
       <section className="border-b bg-muted/20 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,10 +466,10 @@ function Index() {
             className="mb-16 text-center"
           >
             <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
-              Top Categories
+              Our Treatments
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Find the perfect helper for your needs
+              Choose from our range of professional facial treatments
             </p>
           </motion.div>
 
@@ -325,7 +494,7 @@ function Index() {
                       {category.description}
                     </CardDescription>
                     <p className="text-sm font-medium text-primary">
-                      {category.providerCount}+ providers
+                      From RM{category.providerCount}
                     </p>
                   </CardContent>
                 </Card>
@@ -346,10 +515,10 @@ function Index() {
             className="mb-16 text-center"
           >
             <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
-              Why Choose JomTolong?
+              Why Choose RelioSkin?
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              We're committed to providing the best service marketplace experience
+              We're committed to your skin's health and natural beauty
             </p>
           </motion.div>
 
@@ -379,7 +548,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Join as Provider Section */}
+      {/* Newsletter Section */}
       <section className="border-b bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -392,14 +561,14 @@ function Index() {
             <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-br from-card to-card/50 shadow-2xl backdrop-blur">
               <CardHeader className="space-y-4 text-center sm:space-y-6 sm:p-12">
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
-                  <Users className="h-10 w-10 text-primary-foreground" />
+                  <Heart className="h-10 w-10 text-primary-foreground" />
                 </div>
                 <div>
                   <CardTitle className="mb-4 text-3xl sm:text-4xl">
-                    Got skills? Start earning with JomTolong
+                    First Treatment Special Offer
                   </CardTitle>
                   <CardDescription className="text-base sm:text-lg">
-                    Create your profile, list your services, and start helping others today
+                    New customers get 20% off their first facial treatment — book today and experience the difference
                   </CardDescription>
                 </div>
               </CardHeader>
@@ -411,7 +580,7 @@ function Index() {
                     "h-12 px-8 text-base shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
                   )}
                 >
-                  Become a Helper
+                  Book Your First Treatment
                 </Link>
               </CardContent>
             </Card>
@@ -426,13 +595,13 @@ function Index() {
             <div className="lg:col-span-2">
               <div className="mb-4 flex items-center gap-2">
                 <Logo />
-                <span className="text-xl font-bold text-foreground">JomTolong</span>
+                <span className="text-xl font-bold text-foreground">RelioSkin</span>
               </div>
               <p className="mb-4 text-sm text-muted-foreground">
-                Malaysia's trusted service marketplace. Connecting helpers with those who need help.
+                Premium door-to-door facial services. Professional treatments in the comfort of your home.
               </p>
               <p className="text-xs text-muted-foreground">
-                © 2025 JomCloud Network. All rights reserved.
+                © 2025 RelioSkin. All rights reserved.
               </p>
             </div>
 
@@ -440,17 +609,17 @@ function Index() {
               <h3 className="mb-4 font-semibold text-foreground">About</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-primary transition-colors">Our Story</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">How It Works</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Our Therapists</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Service Areas</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="mb-4 font-semibold text-foreground">Support</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Book Appointment</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Contact Us</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Safety</a></li>
               </ul>
             </div>
 

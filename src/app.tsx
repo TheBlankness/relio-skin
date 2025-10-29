@@ -7,8 +7,18 @@ import { router } from "@/router";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import "@/i18n";
 
-// Convex client
-const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
+// Convex client - with validation
+const convexUrl = import.meta.env.VITE_CONVEX_URL;
+
+if (!convexUrl) {
+  throw new Error(
+    "Missing VITE_CONVEX_URL environment variable. " +
+    "Make sure you have a .env.local file with VITE_CONVEX_URL set. " +
+    "Run 'npx convex dev' to set up your Convex backend."
+  );
+}
+
+const convex = new ConvexReactClient(convexUrl);
 
 const convexQueryClient = new ConvexQueryClient(convex);
 const queryClient = new QueryClient({

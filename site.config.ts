@@ -2,13 +2,13 @@
  * Centralized site configuration, add whatever you need here.
  */
 export default {
-  siteTitle: "Convex SaaS",
+  siteTitle: "RelioSkin",
   siteDescription:
-    "A Lightweight, Production-Ready Convex Stack for your next SaaS Application.",
-  siteUrl: "https://convex.dev",
+    "Premium door-to-door facial services in Malaysia. Book certified therapists for professional treatments at your home.",
+  siteUrl: "https://relioskin.com",
   siteImage: "/images/og-image.png",
   favicon: "/favicon.ico",
-  twitterHandle: "",
-  email: "",
-  address: "",
+  twitterHandle: "@relioskin",
+  email: "hello@relioskin.com",
+  address: "Kuala Lumpur, Malaysia",
 };
